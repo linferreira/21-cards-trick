@@ -1,0 +1,122 @@
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-image: url("https://bit.ly/2sHsQdc");
+  font-family: "Merriweather", serif;
+  color: #ffffff;
+  line-height: 24px;
+}
+
+div#instr h1 {
+  font-size: 50px;
+  text-align: center;
+  text-shadow: 2px -2px #000000;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+div#instr h2 {
+  font-size: 30px;
+  text-shadow: 1px -1px #000000;
+  margin-top: 10px;
+  margin-left: 10%;
+  padding: 10px;
+}
+
+div#instr p {
+  font-size: 20px;
+  text-align: center;
+}
+
+div#guessTable,
+div#table {
+  margin-left: 50px;
+  position: absolute;
+}
+
+div#guessTable td.emph,
+div#table td.emph {
+  font-weight: bold;
+  font-size: larger;
+}
+
+div#guessTable button.show,
+div#table button.show {
+  font-size: 16px;
+  text-align: center;
+  background-color: #dddddd;
+  padding: 15px 20px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  width: 120px;
+  height: 40px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+img {
+  padding: 5px;
+  width: 10%;
+  height: 30%;
+}
+
+/* SCSS que não está funcionando
+div {
+  &#instr {
+    h1 {
+      font-size: 50px;
+      text-align: center;
+      text-shadow: 2px -2px #000000;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 30px;
+      text-shadow: 1px -1px #000000;
+      margin-top: 10px;
+      margin-left: 10%;
+      padding: 10px;
+    }
+    p {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  &#guessTable, &#table {
+    margin-left: 50px;
+    position: absolute;
+  }
+  &#guessTable td.emph, &#table td.emph {
+    font-weight: bold;
+    font-size: larger;
+  }
+  &#guessTable button.show, &#table button.show {
+    font-size: 16px;
+    text-align: center;
+    background-color: #dddddd;
+    margin-left: -250px;
+    padding: 15px 20px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    cursor: pointer;
+  }
+}
+
+img {
+  padding: 5px;
+  width: 10%;
+  height: 30%;
+}
+*/

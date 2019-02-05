@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>21 cards trick</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.scss">
+        <script src="main.js"></script>
+    </head>
+    <body onload="beforeInit()">
+
+        <div id="instr">
+            <h1>21 Cards Trick</h1>
+                <h2>Instructions:</h2>
+                    <p>Below is organized a deck of twenty one cards into three piles of seven cards each. </p>
+                    <p>Choose a card, and tell the pile on which the chosen card is contained, for three rounds.</p>
+        </div>
+
+        <div id="guessTable"> <!--Tabela da carta escolhida-->
+                <table cellpadding="5" cellspacing="5">
+                    <tr>
+                        <td class="emph">This is your card!!</td>
+                    </tr>
+                    <tr>
+                        <td><div id="guess"></div> </td>
+                    </tr>
+                    <tr>
+                        <td><button class="show" onclick="init()">Play Again</button></td>
+                    </tr>
+                </table>
+        </div>
+
+        <div id="table"> <!--Pilhas-->
+            <table cellpadding="5" cellspacing="5">
+                <tr>
+                    <td colspan="2" class="emph"><div id="msg"></div></td>
+                </tr>
+                <tr>
+                    <td><div id="row1"></div></td><td><button class="show" onclick="shuffle(1)">This Pile</button></td>
+                </tr>
+                <tr>
+                    <td><div id="row2"></div></td><td><button class="show" onclick="shuffle(2)">This Pile</button></td>
+                </tr>
+                <tr>
+                    <td><div id="row3"></div></td><td><button class="show" onclick="shuffle(3)">This Pile</button></td>
+                </tr>
+            </table>
+        </div>
+
+    </body>
+</html>
