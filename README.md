@@ -1,4 +1,4 @@
-Projeto realizado durante o processo seletivo para estaagio na empresa "Codeminer42".
+Projeto realizado durante o processo seletivo para estágio na empresa "Codeminer42".
 
 O objetivo do teste é desenvolver um truque de cartas.
 
