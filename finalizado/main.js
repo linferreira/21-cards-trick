@@ -1,21 +1,21 @@
 var indexer = [0, 3, 6, 9, 12, 15, 18, 1, 4, 7, 10, 13, 16, 19, 2, 5, 8, 11, 14, 17, 20]; /*ordem para embaralhar as cartas*/
-var chosenCards = []; /*cartas escolhidas*/
-var afterShuffle = []; /*cartas embaralhadas*/
-var clickCount = 0; /*contador*/
+var chosen_cards = []; /*cartas escolhidas*/
+var after_shuffle = []; /*cartas embaralhadas*/
+var click_count = 0; /*contador*/
 var guess; /*resultado*/
 var table; /*tabela das pilhas*/
 var guessTable; /*carta escolhida*/
-var imageArray = []; /*matriz de imagens */
+var image_array = []; /*array de imagens */
 
 /*Processar as imagens das cartas*/
 function render() {
     for (var i = 0; i < 21; i++) {
-        var card = document.createElement("img");
-        card.setAttribute("id", "i" + i);
-        card.setAttribute("src", imageArray[i]);
-        chosenCards[chosenCards.length] = card;
+        var card = document.createElement("img"); /*cria o elemento img*/
+        card.setAttribute("id", "i" + i); /*altera o nome do id das imagens*/
+        card.setAttribute("src", image_array[i]); /*imagem dentro do array*/
+        chosen_cards[chosen_cards.length] = card; /*escolher as imagens*/
     }
-    deal(chosenCards);
+    deal(chosen_cards);
 }
 
 /*Embaralhar as cartas*/
@@ -37,19 +37,20 @@ function shuffle(index) {
             indexToIndex(7, 0, 7);
             break;
     }
-    chosenCards = afterShuffle;
-    afterShuffle = [];
+    chosen_cards = after_shuffle; /*atribui o novo array*/
+    after_shuffle = [];/*array vazio*/
 
-    deal(chosenCards);
-    clickCount++;
+    deal(chosen_cards);
+    click_count++;
 
-    if (clickCount == 3) {
-        var card = chosenCards[10]
+ /*seleciona a decima primeira (carta central) carta apos a terceira rodada*/
+    if (click_count == 3) {
+        var card = chosen_cards[10]
         showGuess(card);
     }
 }
 
-/*"Macete" para empilhar as cartas deixando o pilha escolhida no centro */
+/*responsavel por organizar as escolhas das pilhas */
 function deal(cards) {
     count = 0;
     var container;
@@ -61,26 +62,27 @@ function deal(cards) {
     }
 }
 
+/*retorna as cartas para a tela durante as rodadas*/
 function indexToIndex(sourceIndex, targetIndex, count) {
     while (count > 0) {
-        afterShuffle[targetIndex++] = chosenCards[indexer[sourceIndex++]];
+        after_shuffle[targetIndex++] = chosen_cards[indexer[sourceIndex++]];
         count--;
     }
 }
 
 /*apresenta as pilhas*/
 function init() {
-    imageArray = cardArray;
+    image_array = card_array;
     guess = document.getElementById("guess");
     guessTable = document.getElementById("guessTable");
     table = document.getElementById("table");
     table.style.display = "block";
     guessTable.style.display = "none";
-    clickCount = 0;
+    click_count = 0;
         render();
 }
 
-/*mostra a carta escolhida*/
+/*mostra a catrta*/
 function showGuess(card) {
     table.style.display = "none";
     guessTable.style.display = "block";
@@ -88,20 +90,21 @@ function showGuess(card) {
     guess.appendChild(card);
 }
 
-/*Pega as cartas a partir da API*/
+
+/*consumir API*/
 function beforeInit() {
   var request = new XMLHttpRequest();
   request.open('GET', 'https://deckofcardsapi.com/api/deck/new/draw/?count=21', true);
   request.onload = function () {
     var data = JSON.parse(this.response);
-    cardArray = Object.keys(data.cards).map(res => data.cards[res].image);
-    capture(cardArray);
+    card_array = Object.keys(data.cards).map(res => data.cards[res].image);
+    capture(card_array);
   }
   request.send();
 }
 
-/*Coloca as cartas da API numa matriz global */
-function capture(cardArray) {
-  imageArray = cardArray;
+/*copia os elementos da API para um novo array*/
+function capture(card_array) {
+  image_array = card_array;
   init();
 }
